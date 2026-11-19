@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class CommerceSystem {
     private List<Category> categories;
     private Cart cart = new Cart();
+    private AdminManager adminManager;
 
     public CommerceSystem(List<Category> categories) {
         setCategories(categories);
@@ -15,6 +16,10 @@ public class CommerceSystem {
 
     public Cart getCart() {
         return cart;
+    }
+
+    public AdminManager getAdminManager() {
+        return adminManager;
     }
 
     public List<Category> getCategories() {
@@ -26,6 +31,7 @@ public class CommerceSystem {
             throw new IllegalArgumentException("카테고리 목록은 null일 수 없습니다.");
         }
         this.categories = new ArrayList<>(categories);
+        this.adminManager = new AdminManager(this.categories, this.cart);
     }
 
     public void start() {
@@ -44,6 +50,8 @@ public class CommerceSystem {
                     System.out.println("5. 주문 취소       | 진행중인 주문을 취소합니다.");
                 }
 
+                System.out.println("6. 관리자 모드");
+
                 System.out.print("번호를 입력하세요: ");
                 if (!scanner.hasNextLine()) {
                     break;
@@ -54,11 +62,7 @@ public class CommerceSystem {
                 try {
                     choice = Integer.parseInt(input);
                 } catch (NumberFormatException e) {
-                    if (cart.isEmpty()) {
-                        System.out.printf("잘못된 입력입니다. 0~%d 사이의 숫자를 입력해 주세요.%n", categories.size());
-                    } else {
-                        System.out.println("잘못된 입력입니다. 0~5 사이의 숫자를 입력해 주세요.");
-                    }
+                    System.out.println("잘못된 입력입니다. 올바른 번호를 입력해 주세요.");
                     continue;
                 }
 
@@ -79,12 +83,10 @@ public class CommerceSystem {
                     } else {
                         handleCancelOrderMenu(scanner);
                     }
+                } else if (choice == 6) {
+                    adminManager.start(scanner);
                 } else {
-                    if (cart.isEmpty()) {
-                        System.out.printf("잘못된 입력입니다. 0~%d 사이의 숫자를 입력해 주세요.%n", categories.size());
-                    } else {
-                        System.out.println("잘못된 입력입니다. 0~5 사이의 숫자를 입력해 주세요.");
-                    }
+                    System.out.println("잘못된 입력입니다. 올바른 번호를 입력해 주세요.");
                 }
             }
         }
