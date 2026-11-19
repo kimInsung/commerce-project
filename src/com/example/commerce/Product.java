@@ -56,4 +56,14 @@ public class Product {
         }
         this.stock = stock;
     }
+
+    public void decreaseStock(int quantity) {
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("차감할 수량은 1 이상이어야 합니다.");
+        }
+        if (quantity > this.stock) {
+            throw new IllegalArgumentException("재고가 부족합니다. (현재 재고: " + this.stock + "개)");
+        }
+        this.stock -= quantity;
+    }
 }
