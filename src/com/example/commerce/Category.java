@@ -1,5 +1,7 @@
 package com.example.commerce;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Category {
@@ -7,15 +9,29 @@ public class Category {
     private List<Product> products;
 
     public Category(String categoryName, List<Product> products) {
-        this.categoryName = categoryName;
-        this.products = products;
+        setCategoryName(categoryName);
+        setProducts(products);
     }
 
     public String getCategoryName() {
         return categoryName;
     }
 
+    public void setCategoryName(String categoryName) {
+        if (categoryName == null || categoryName.trim().isEmpty()) {
+            throw new IllegalArgumentException("카테고리명은 null이거나 공백일 수 없습니다.");
+        }
+        this.categoryName = categoryName;
+    }
+
     public List<Product> getProducts() {
-        return products;
+        return Collections.unmodifiableList(products);
+    }
+
+    public void setProducts(List<Product> products) {
+        if (products == null) {
+            throw new IllegalArgumentException("상품 목록은 null일 수 없습니다.");
+        }
+        this.products = new ArrayList<>(products);
     }
 }

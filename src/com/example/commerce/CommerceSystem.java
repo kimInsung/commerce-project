@@ -1,5 +1,7 @@
 package com.example.commerce;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,7 +9,18 @@ public class CommerceSystem {
     private List<Category> categories;
 
     public CommerceSystem(List<Category> categories) {
-        this.categories = categories;
+        setCategories(categories);
+    }
+
+    public List<Category> getCategories() {
+        return Collections.unmodifiableList(categories);
+    }
+
+    public void setCategories(List<Category> categories) {
+        if (categories == null) {
+            throw new IllegalArgumentException("카테고리 목록은 null일 수 없습니다.");
+        }
+        this.categories = new ArrayList<>(categories);
     }
 
     public void start() {
