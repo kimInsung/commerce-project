@@ -60,4 +60,18 @@ public class Cart {
     public void clear() {
         items.clear();
     }
+
+    public boolean removeProduct(Product product) {
+        if (product == null) {
+            return false;
+        }
+        for (int i = 0; i < items.size(); i++) {
+            CartItem item = items.get(i);
+            if (item.getProduct().equals(product) || item.getProduct().getName().trim().equalsIgnoreCase(product.getName().trim())) {
+                items.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }

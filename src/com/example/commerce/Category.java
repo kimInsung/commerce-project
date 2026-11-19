@@ -34,4 +34,54 @@ public class Category {
         }
         this.products = new ArrayList<>(products);
     }
+
+    public boolean containsProductName(String name) {
+        if (name == null) {
+            return false;
+        }
+        String trimmedName = name.trim();
+        for (Product product : products) {
+            if (product.getName().trim().equalsIgnoreCase(trimmedName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addProduct(Product product) {
+        if (product == null) {
+            throw new IllegalArgumentException("추가할 상품은 null일 수 없습니다.");
+        }
+        if (containsProductName(product.getName())) {
+            throw new IllegalArgumentException("이미 존재하는 상품명입니다: " + product.getName());
+        }
+        this.products.add(product);
+    }
+
+    public Product findProductByName(String name) {
+        if (name == null) {
+            return null;
+        }
+        String trimmedName = name.trim();
+        for (Product product : products) {
+            if (product.getName().trim().equalsIgnoreCase(trimmedName)) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    public boolean removeProduct(Product product) {
+        if (product == null) {
+            return false;
+        }
+        for (int i = 0; i < products.size(); i++) {
+            Product p = products.get(i);
+            if (p == product || p.getName().trim().equalsIgnoreCase(product.getName().trim())) {
+                products.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }
