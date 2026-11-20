@@ -1,5 +1,8 @@
-package com.example.commerce;
+package com.example.commerce.system;
 
+import com.example.commerce.cart.Cart;
+import com.example.commerce.category.Category;
+import com.example.commerce.product.Product;
 import java.util.List;
 import java.util.Scanner;
 

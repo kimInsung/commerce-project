@@ -1,4 +1,6 @@
-package com.example.commerce;
+package com.example.commerce.cart;
+
+import com.example.commerce.product.Product;
 
 public class CartItem {
     private Product product;

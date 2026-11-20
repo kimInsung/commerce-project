@@ -1,5 +1,10 @@
-package com.example.commerce;
+package com.example.commerce.system;
 
+import com.example.commerce.cart.Cart;
+import com.example.commerce.cart.CartItem;
+import com.example.commerce.category.Category;
+import com.example.commerce.customer.Grade;
+import com.example.commerce.product.Product;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -49,6 +54,7 @@ public class CommerceSystem {
                     System.out.println("[ 주문 관리 ]");
                     System.out.println("4. 장바구니 확인    | 장바구니를 확인 후 주문합니다.");
                     System.out.println("5. 주문 취소       | 진행중인 주문을 취소합니다.");
+                    System.out.println();
                 }
 
                 System.out.println("6. 관리자 모드");

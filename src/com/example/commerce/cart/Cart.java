@@ -1,5 +1,6 @@
-package com.example.commerce;
+package com.example.commerce.cart;
 
+import com.example.commerce.product.Product;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

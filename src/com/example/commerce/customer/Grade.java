@@ -1,4 +1,4 @@
-package com.example.commerce;
+package com.example.commerce.customer;
 
 public enum Grade {
     BRONZE(0),

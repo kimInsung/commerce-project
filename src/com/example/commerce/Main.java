@@ -1,5 +1,10 @@
 package com.example.commerce;
 
+import com.example.commerce.category.Category;
+import com.example.commerce.customer.Customer;
+import com.example.commerce.customer.Grade;
+import com.example.commerce.product.Product;
+import com.example.commerce.system.CommerceSystem;
 import java.util.ArrayList;
 import java.util.List;
 
