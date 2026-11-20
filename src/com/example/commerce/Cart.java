@@ -3,6 +3,7 @@ package com.example.commerce;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cart {
     private List<CartItem> items = new ArrayList<>();
@@ -73,5 +74,17 @@ public class Cart {
             }
         }
         return false;
+    }
+
+    public boolean removeProductByName(String productName) {
+        if (productName == null) {
+            return false;
+        }
+        String targetName = productName.trim();
+        int beforeSize = items.size();
+        this.items = items.stream()
+                .filter(item -> !item.getProduct().getName().trim().equalsIgnoreCase(targetName))
+                .collect(Collectors.toList());
+        return items.size() < beforeSize;
     }
 }
