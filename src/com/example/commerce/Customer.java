@@ -3,9 +3,9 @@ package com.example.commerce;
 public class Customer {
     private String name;
     private String email;
-    private String grade;
+    private Grade grade;
 
-    public Customer(String name, String email, String grade) {
+    public Customer(String name, String email, Grade grade) {
         setName(name);
         setEmail(email);
         setGrade(grade);
@@ -33,13 +33,13 @@ public class Customer {
         this.email = email;
     }
 
-    public String getGrade() {
+    public Grade getGrade() {
         return grade;
     }
 
-    public void setGrade(String grade) {
-        if (grade == null || grade.trim().isEmpty()) {
-            throw new IllegalArgumentException("등급은 null이거나 공백일 수 없습니다.");
+    public void setGrade(Grade grade) {
+        if (grade == null) {
+            throw new IllegalArgumentException("등급은 null일 수 없습니다.");
         }
         this.grade = grade;
     }

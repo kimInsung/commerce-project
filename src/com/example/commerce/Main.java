@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Customer customer = new Customer("김인성", "kim@example.com", "BRONZE");
+        Customer customer = new Customer("김인성", "kim@example.com", Grade.BRONZE);
 
         List<Product> electronicsProducts = new ArrayList<>();
         electronicsProducts.add(new Product("Galaxy S25", 1200000, "최신 안드로이드 스마트폰", 50));
